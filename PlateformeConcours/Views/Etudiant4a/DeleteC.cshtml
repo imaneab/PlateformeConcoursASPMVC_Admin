@@ -1,0 +1,89 @@
+﻿@model PlateformeConcours.Models.Etudiant4a
+
+
+@{
+    ViewBag.Title = "Supprimer un candidat";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Supprimer un candidat<small></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Recherche corbeille</a></li>
+            <li class="active">Supprimer @Model.Etudiant.Nom @Model.Etudiant.Prenom</li>
+        </ol>
+
+    </div>
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Vous etes sur que vous voulez supprimé @Model.Etudiant.Nom @Model.Etudiant.Prenom ?</div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+
+                        <div>
+
+                            <hr />
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Informations</th>
+
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">  @Html.DisplayNameFor(model => model.Etudiant.Filiere.Titre)</th>
+                                        <td> @Html.DisplayFor(model => model.Etudiant.Filiere.Titre)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> @Html.DisplayNameFor(model => model.Etudiant.Nom)</th>
+                                        <td> @Html.DisplayFor(model => model.Etudiant.Nom)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Prenom)</th>
+                                        <td> @Html.DisplayFor(model => model.Etudiant.Prenom)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Cne)</th>
+                                        <td>@Html.DisplayFor(model => model.Etudiant.Cne)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Email)</th>
+                                        <td>@Html.DisplayFor(model => model.Etudiant.Email)</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Revenir à la liste", "Recherche4ACorbeil")
+                                </div>
+                            }
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

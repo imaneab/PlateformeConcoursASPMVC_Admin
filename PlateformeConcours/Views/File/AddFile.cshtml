@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Gestion des anciens épreuves <small>Exemples</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Concours</a></li>
+            <li class="active">Exemples</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Advanced Tables -->
+                <div class="panel panel-default">
+
+                    <div class="panel-body">
+                        <div class="table-responsive">
+
+
+
+
+
+                            @using (Html.BeginForm("Add", "File",
+                                                FormMethod.Post, new { id = "attachment", enctype = "multipart/form-data", encoding = "multipart/form-data" }))
+                            {
+
+                                <div>
+                                    <label for="exampleInputFile">Nom de la filiére :</label>
+                                    @Html.DropDownList("ID", ViewBag.filiere as SelectList, new { @class = "col-md-4 form-control" })<br /><br />
+                                </div><br /><br />
+
+
+                                <div class="form-group">
+                                    <div>
+                                        <label for="inputdefault">Titre épreuve :</label>
+                                        <input class="form-control" id="inputdefault" type="text" placeholder="Titre..." name="Titre_concours">
+                                    </div>
+                                </div><br />
+
+
+                                <div class="form-group">
+                                    <div>
+                                        <label for="inputdefault">Année de concours :</label>
+                                        <input class="form-control" id="inputdefault" type="text" placeholder="Année..." name="Annee">
+                                    </div>
+                                </div><br />
+
+
+
+
+                                <label for="exampleInputFile">Télécharger un fichier :</label>
+                              
+                                <input type="file" name="uploadFile" id="uploadFile" /><br /><br />
+
+
+
+                                <input class="btn btn-info fa-check" type="submit" value="Télécharger" />
+
+
+
+
+
+                            }
+
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

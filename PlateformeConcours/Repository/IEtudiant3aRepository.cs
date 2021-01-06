@@ -1,0 +1,101 @@
+﻿using PlateformeConcours.Models;
+using PlateformeConcours.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace PlateformeConcours.Repository
+{
+    public interface IEtudiant3aRepository
+    {
+        IEnumerable<Etudiant3a> GetAllCandidatsDataNumDossier();
+        Etudiant3a GetAllCandidatsData2(int? id);
+        Etudiant3a GetAllCandidatsData2(int id);
+        IEnumerable<Etudiant3a> Get();
+        Etudiant3a Get(int id);
+        Etudiant3a Get(int? id);
+        Etudiant3a GetSup(int id);
+        Etudiant3a GetSup(int? id);
+        Etudiant3a GetSup2(int id);
+        Etudiant3a GetSup2(int? id);
+        void Add(Etudiant3a etudiant);
+        void Update(Etudiant3a etudiant);
+        void Remove(Etudiant3a etudiant);
+        void Remove2(Etudiant3a etudiant);
+        Etudiant3a GetByCne(string cne);
+        Etudiant3a GetByNumDossier(string NumDossier);
+        void Delete(int id);
+        void Save();
+        int CountTotale();
+        int CountInfo();
+        int CountIndus();
+        int CountProcede();
+        int CountTelecom();
+        int CountTotaleSupprime();
+        IEnumerable<Etudiant3a> GetAllCandidatsData();
+        IEnumerable<Etudiant3a> GetAllCandidatsDataSupp();
+        IEnumerable<Etudiant3a> GetPreselection(int Filiere, string Diplome);
+        IEnumerable<Etudiant3a> GetListEtudiantByEtat(string Etat);
+        IEnumerable<Etudiant3a> GetListEtudiantByFiliere(int FiliereID);
+        IEnumerable<Etudiant3a> GetListEtudiantByFiliere(int? FiliereID);
+        IEnumerable<Etudiant3a> GetDeletedEtudiants();
+        Etudiant3a GetDeleted(int? id);
+        IEnumerable<Etudiant3a> GetListPreselectionneByFiliere(int FiliereID);
+        IEnumerable<Etudiant3a> GetListPreselectionneByFiliere(int? FiliereID);
+        
+        //*********Partie Harir ******//
+        int ListeDUT();
+        int ListeDEUG();
+        int ListeDEUST();
+        int ListeLF();
+        int ListeLP();
+        int ListeGINFDUT();
+        int ListeGINDDUT();
+        int ListeGPMCDUT();
+        int ListeGTRDUT();
+        int ListeGINFDEUG();
+        int ListeGINDDEUG();
+        int ListeGPMCDEUG();
+        int ListeGTRDEUG();
+        int ListeGINFDEUST();
+        int ListeGINDDEUST();
+        int ListeGPMCDEUST();
+        int ListeGTRDEUST();
+        int ListeGINFLP();
+        int ListeGINDLP();
+        int ListeGPMCLP();
+        int ListeGTRLP();
+        int ListeGINFLF();
+        int ListeGINDLF();
+        int ListeGPMCLF();
+        int ListeGTRLF();
+        int ListeGINFDUTC();
+        int ListeGINDDUTC();
+        int ListeGPMCDUTC();
+        int ListeGTRDUTC();
+        int ListeGINFDEUGC();
+        int ListeGINDDEUGC();
+        int ListeGPMCDEUGC();
+        int ListeGTRDEUGC();
+        int ListeGINFDEUSTC();
+        int ListeGINDDEUSTC();
+        int ListeGPMCDEUSTC();
+        int ListeGTRDEUSTC();
+        int ListeGINFLPC();
+        int ListeGINDLPC();
+        int ListeGPMCLPC();
+        int ListeGTRLPC();
+        int ListeGINFLFC();
+        int ListeGINDLFC();
+        int ListeGPMCLFC();
+        int ListeGTRLFC();
+
+        System.Threading.Tasks.Task DeliberationMethodAsync(int Filiere, DeliberationViewModel model);
+        Task<bool> SendEmailAsync(int id, int? FiliereID);
+        IEnumerable<Etudiant3a> GetListAfterDelibByFiliere(int? FiliereID);
+        IEnumerable<Etudiant3a> GetListAdmisByFiliere(int? FiliereID);
+        IEnumerable<Etudiant3a> GetListAttenteByFiliere(int? FiliereID);
+        Task<bool> SendEmailPreselectionAsync(int id, int? FiliereID);
+    }
+}

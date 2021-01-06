@@ -1,0 +1,156 @@
+﻿@model PlateformeConcours.ViewModel.ListsResultat3a
+@{
+    ViewBag.Title = "Resultats des concours";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Content/js/jspdf.debug.js"></script>
+<script type="text/javascript">
+           function demoFromHTML() {
+               var pdf = new jsPDF('p', 'pt', 'letter');
+               // source can be HTML-formatted string, or a reference
+               // to an actual DOM element from which the text will be scraped.
+               source = $('#customers')[0];
+
+               // we support special element handlers. Register them with jQuery-style
+               // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+               // There is no support for any other type of selectors
+               // (class, of compound) at this time.
+               specialElementHandlers = {
+                   // element with id of "bypass" - jQuery style selector
+                   '#bypassme': function(element, renderer) {
+                       // true = "handled elsewhere, bypass text extraction"
+                       return true
+                   }
+               };
+               margins = {
+                   top: 80,
+                   bottom: 60,
+                   left: 40,
+                   width: 522
+               };
+               // all coords and widths are in jsPDF instance's declared units
+               // 'inches' in this case
+               pdf.fromHTML(
+                       source, // HTML string or DOM elem ref.
+                       margins.left, // x coord
+                       margins.top, {// y coord
+                           'width': margins.width, // max width of content on PDF
+                           'elementHandlers': specialElementHandlers
+                       },
+               function(dispose) {
+                   // dispose: object with X, Y of the last line add to the PDF
+                   //          this allow the insertion of new lines after html
+                   pdf.save('Liste @ViewBag.Nom .pdf');
+               }
+               , margins);
+           }
+</script>
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Resultats Concours <small>Liste Admis et Attente</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li> @Html.ActionLink("Filieres", "ChoixListeDeliberation", "Etudiant3a")</li>
+            <li class="active">@Html.DisplayFor(e => e.Titre) </li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="row" id="customers">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Liste Principale des Admis <small>(Classe par ordre de merite)</small></div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>CIN</th>
+                                        <th>CNE</th>
+                                        <th>Num Dossier</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int counter = 0;}
+                                    @foreach (var item in Model.ListAdmis)
+                                    {
+                                        counter++;
+                                        <tr class="odd gradeX">
+                                            <td style="text-align:center">@counter</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Nom)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Prenom)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Cin)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Cne)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.NumDossier)</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            @* Liste d'attente *@
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Liste d'attente <small>(Classe par ordre de merite)</small></div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>CIN</th>
+                                        <th>CNE</th>
+                                        <th>Num Dossier</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.ListAttente)
+                                    {
+                                        counter++;
+                                        <tr class="odd gradeX">
+                                            <td style="text-align:center">@counter</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Nom)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Prenom)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Cin)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.Cne)</td>
+                                            <td>@Html.DisplayFor(e => item.Etudiant.NumDossier)</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="javascript:demoFromHTML()" class="btn btn-success">Télécharger en PDF</button>
+    </div>
+</div>

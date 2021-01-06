@@ -1,0 +1,79 @@
+﻿IEnumerable<PlateformeConcours.Models.Filiere>
+
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    }
+
+
+
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                Gestion des filières <small>filières</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Concours</a></li>
+                <li class="active">Exemples</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+                            <a href="/File/AddFile" class="btn btn-success  glyphicon-plus ">Ajouter une épreuve</a>
+                            <div class="table-responsive">
+
+                                <div class="panel-heading">
+                                    <h4> Table des anciens concours </h4>
+                                </div>
+
+
+
+
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            
+
+                                            <th>Nom Filiere</th>
+                                            <th>Liste des Anciens Epreuves</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                               
+
+                                                <td>@item.Titre</td>
+
+                                                <td>
+
+                                                    @Html.ActionLink("  Liste Epreuves", "ListFilesParFiliere", new { ID = item.ID }, new { @class = " btn btn-info  fa fa-file" })
+
+
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

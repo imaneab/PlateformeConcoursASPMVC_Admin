@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Preselection 4ieme année";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+<script src="~/Scripts/jquery.table2excel.js"></script>
+<script src="~/Scripts/jquery.min.js"></script>
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Liste des préséléctionné <small>Diplome : @ViewBag.type</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/Home/Index">Acceuil</a></li>
+            <li><a href="#">Préselection</a></li>
+            <li class="active">Liste des preselections</li>
+        </ol>
+
+    </div>
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Preselection 4ieme année</div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <div id="TableSelection">
+
+                            <table id="EmployeeListe" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Prenom</th>
+                                        <th scope="col">Cne</th>
+                                        <th scope="col">Cin</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Civilite</th>
+                                        <th scope="col">Nationnalite</th>
+                                        <th scope="col">Tel</th>
+                                        <th scope="col">Etablissement</th>
+                                        <th scope="col">Filiere</th>
+                                        <th scope="col">Bac</th>
+                                        <th scope="col">S1</th>
+                                        <th scope="col">S2</th>
+                                        <th scope="col">S3</th>
+                                        <th scope="col">S4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var emp in Model)
+                                    {
+                                        <tr>
+
+                                            <td>@emp.Nom</td>
+                                            <td>@emp.Prenom</td>
+                                            <td>@emp.Cne</td>
+                                            <td>@emp.Cin</td>
+                                            <td>@emp.Email</td>
+                                            <td>@emp.Civilite</td>
+                                            <td>@emp.Nationnalite</td>
+                                            <td>@emp.Tel</td>
+                                            <td>@emp.Etablissement</td>
+                                            <td>@emp.Filiere.Titre</td>
+                                            <td>@emp.Note.NoteBac</td>
+                                            <td>@emp.Note.S1</td>
+                                            <td>@emp.Note.S2</td>
+                                            <td>@emp.Note.S3</td>
+                                            <td>@emp.Note.S4</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <button onclick="exportTableToExcel('EmployeeListe', 'Liste des preselectionne 3A @ViewBag.type')" class="btn btn-success btn-sm">Exporter vers un fichier Excel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+﻿@model PlateformeConcours.ViewModel.Deliberation4ViewModel
+@{
+    ViewBag.Title = "Deliberation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Deliberation <small>4ieme Annee</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Deliberation</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="card-title">
+                        <div class="title">Deliberation apres entretien</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("ListDeliberation", "Etudiant4a", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.Label("id", "Filiere", new { @class = "col-sm-2 control-label" })
+                            <div class="col-sm-4">
+                                @Html.DropDownList("id", ViewBag.liste as SelectList, "Selectionner une filiere", new { @class = "form-control", required = "required"  })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("NbrPlaces", "Nombre de Places", new { @class = "col-sm-2 control-label" })
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(model => model.NbrPlaces, new { @class = "form-control", Type = "number" , required = "required" })
+                                @Html.ValidationMessageFor(model => model.NbrPlaces, "", new { @class = "text-danger", required = "required"  })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("ListeAtt", "Liste d'attente", new { @class = "col-sm-2 control-label" })
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(model => model.ListeAtt, new { @class = "form-control", Type = "number" })
+                                @Html.ValidationMessageFor(model => model.ListeAtt, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="horizontal-form">
+                            <div class="col-md-offset-9">
+                                <input type="submit" value="Afficher la liste" class="btn btn-success" />
+                                <input type="reset" class="btn btn-danger" value="Reset" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

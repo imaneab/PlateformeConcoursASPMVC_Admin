@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap Styles-->
+    <link rel="icon" type="image/png" href="~/Content/Auth/images/icons/logo.jpg" />
+
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="~/Content/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="~/Content/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="~/Content/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/assets/js/Lightweight-Chart/cssCharts.css">
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/utils.js"></script>
+    @RenderSection("css", required: false)
+    <style>
+        .has-error {
+            border-style: solid;
+            border-color: red;
+        }
+
+        .badge-danger {
+            background-color: #DC3545;
+            text-align: center;
+        }
+
+        .badge-warning {
+            background-color: #FFC107;
+            text-align: center;
+        }
+
+        .badge-success {
+            background-color: #28A745;
+            text-align: center;
+        }
+
+        .badge-dark {
+            background-color: #343A40;
+            color: #FFFFFF;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><strong><i class="icon fa fa-user"></i> AdminENSAS</strong></a>
+
+                <div id="sideNav" href="">
+                    <i class="fa fa-bars icon"></i>
+                </div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>Roudani Mohamed</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Aujourd'hui</em>
+                                    </span>
+                                </div>
+                                <div>Bonjour Monsieur, J'espère que vous allez bien! Svp j'ai un petit problème concernant...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>Jnaini Zineb</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Hier</em>
+                                    </span>
+                                </div>
+                                <div>Bonjour Monsieur, J'espère que vous allez bien! Svp j'ai un petit problème concernant...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>Harir Younes</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Hier</em>
+                                    </span>
+                                </div>
+                                <div>Bonjour Monsieur, J'espère que vous allez bien! Svp j'ai un petit problème concernant...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Lire tous les Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- /.dropdown-messages -->
+                </li>
+
+
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-fw"></i>Sign Out</a>
+
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                }
+                            </li>
+                        </ul>
+
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu" href="/Home/Index"><i class="fa fa-dashboard"></i> Acceuil</a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> 3ieme Annee<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Etudiant3a/AffecterNumDossier"><i class="fa fa-save"></i>Enregistrement</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/GetAllCondidatData"><i class="fa fa-search"></i>Recherche</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/Recherche3ACorbeil"><i class="fa fa-trash-o"></i>Recherche Corbeil</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/Preselection3A"><i class="fa fa-file"></i>Présélection</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/Statistique"><i class="fa fa-align-right"></i>Stat Présélection</a>
+                            </li>
+
+                            <li>
+                                <a href="/Etudiant3a/ChoixFiliereCorrection"><i class="fa fa-pencil-square-o"></i>Gestion de correction</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/Deliberation"><i class="fa fa-check-square"></i>Sélection</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-align-right"></i>Stat admis</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant3a/ChoixListeDeliberation"><i class="fa fa-list-alt"></i>Liste principale/d'attente</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> 4ieme Annee<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Etudiant4a/AffecterNumDossier"><i class="fa fa-save"></i>Enregistrement</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/GetAllCondidatData"><i class="fa fa-search"></i>Recherche</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/Recherche4ACorbeil"><i class="fa fa-trash-o"></i>Recherche Corbeil</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/Preselection4A"><i class="fa fa-file"></i>Présélection</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/Statistique"><i class="fa fa-align-right"></i>Stat Présélection</a>
+                            </li>
+
+                            <li>
+                                <a href="/Etudiant4a/ChoixFiliereCorrection"><i class="fa fa-pencil-square-o"></i>Gestion de correction</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/Deliberation"><i class="fa fa-check-square"></i>Sélection</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-align-right"></i>Stat admis</a>
+                            </li>
+                            <li>
+                                <a href="/Etudiant4a/ChoixListeDeliberation"><i class="fa fa-list-alt"></i>Liste principale/d'attente</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/File/Index"><i class="fa fa-folder-open-o"></i> Anciens Epreuves</a>
+                    </li>
+                    <li>
+                        <a href="/Home/Index"><i class="fa fa-cog"></i> Parametres</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <!-- /. PAGE WRAPPER  -->
+        @RenderBody()
+    </div>
+
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="~/Content/assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="~/Content/assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="~/Content/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/Content/assets/js/morris/morris.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Content/assets/js/easypiechart.js"></script>
+    <script src="~/Content/assets/js/easypiechart-data.js"></script>
+
+    <script src="~/Content/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('input[name ="Rechercher"]').addClass("form-control").css("width", "200px");
+        });
+    </script>
+    <script src="~/Content/assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Content/assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+            $('#dataTables-info3').dataTable();
+            $('#dataTables-indus3').dataTable();
+            $('#dataTables-gpmc3').dataTable();
+            $('#dataTables-gtr3').dataTable();
+            $('#dataTables-info4').dataTable();
+            $('#dataTables-indus4').dataTable();
+            $('#dataTables-gpmc4').dataTable();
+            $('#dataTables-gtr4').dataTable();
+        });
+        var $combo = $(".classement");
+        $combo.on("change", function () {
+            var select = this,
+                selected = $("option:selected", this).text();
+            $combo.each(function (_, el) {
+                if (el !== select) {
+                    $("option", el).each(function (_, el) {
+                        var $el = $(el);
+                        if ($el.text() === selected) {
+                            $el.remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Custom Js-->
+    <script src="~/Content/assets/js/custom-scripts.js"></script>
+
+
+    <!-- Chart Js
+    <script type="text/javascript" src="~/Content/assets/js/Chart.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/chartjs.js"></script>-->
+
+
+</body>
+</html>

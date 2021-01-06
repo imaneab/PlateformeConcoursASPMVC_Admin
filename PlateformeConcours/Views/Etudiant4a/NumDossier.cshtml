@@ -1,0 +1,81 @@
+﻿@model PlateformeConcours.Models.Etudiant4a
+@{
+    ViewBag.Title = "Affectation du numero de dossier";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Affectation <small>Numero de dossier</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/Home/Index">Acceuil</a></li>
+            <li><a href="/Etudiant3a/AffecterNumDossier">Affectation N° Dossier</a></li>
+            <li class="active">@Model.Etudiant.Nom @Model.Etudiant.Prenom</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Vous voulez affecter le n° de dossier à <u><b style="font-size:20px;color:dimgrey">@Model.Etudiant.Nom @Model.Etudiant.Prenom</b></u> ?</div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Informations</th>
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"> @Html.DisplayNameFor(model => model.Etudiant.Cin)</th>
+                                    <td> @Html.DisplayFor(model => model.Etudiant.Cin)</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row"> @Html.DisplayNameFor(model => model.Etudiant.Cne)</th>
+                                    <td> @Html.DisplayFor(model => model.Etudiant.Cne)</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Nom)</th>
+                                    <td> @Html.DisplayFor(model => model.Etudiant.Nom)</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Prenom)</th>
+                                    <td>@Html.DisplayFor(model => model.Etudiant.Prenom)</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">@Html.DisplayNameFor(model => model.Etudiant.Filiere.Titre)</th>
+                                    <td>@Html.DisplayFor(model => model.Etudiant.Filiere.Titre)</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Affecter" class="btn btn-success" /> |
+                                @Html.ActionLink("Revenir à la liste", "AffecterNumDossier")
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

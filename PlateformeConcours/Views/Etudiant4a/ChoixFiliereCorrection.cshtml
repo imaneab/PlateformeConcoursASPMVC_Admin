@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Correction par filiere";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Correction <small>4eme Annee</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Par Filiere</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Choisir les resultats de la filiere :</div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        @if (ViewBag.Message == "success")
+                        {
+                            <div class="alert alert-success"><strong>Notes Sauvegardes !</strong> Vous avez bien enregister les notes des concours.</div>
+                        }
+                        else if (ViewBag.Message == "error")
+                        {
+                            <div class="alert alert-danger"><strong>Formules Errones !</strong> Veuillez reesayer ulterierement.</div>
+                        }
+                        @using (Html.BeginForm("Correction4a", "Etudiant4a", FormMethod.Get, new { @class = "inline-form" }))
+                        {
+
+                            <div class="form-group">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    @Html.DropDownList("id", Model as SelectList, "Selectionner une filiere", new { @class = "form-control", required = "required" })
+                                </div>
+                                <input type="submit" value="Afficher les notes" class="btn btn-primary" />
+                            </div>
+                            
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

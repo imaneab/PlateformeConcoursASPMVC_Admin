@@ -1,0 +1,88 @@
+﻿@using PlateformeConcours.Models
+@model LoginViewModel
+
+@{
+    Layout = "";
+    ViewBag.Title = "Login Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Partial("~/Views/Partials/CssPartial.cshtml")
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/Auth/images/icons/logo.jpg" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Auth/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login100-form validate-form", id = "sign_in", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <span class="login100-form-title p-b-43">
+                        Authentification
+                    </span>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "input100", autofocus = "", required = true })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        @Html.PasswordFor(m => m.Password, new { @class = "input100", placeholder = "Mot de passe", required = true, })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox"><br />
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Sauvegarder la session
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="#" class="txt1">
+                                Mot de passe oublier?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" style="width:200px">
+                            S'authentifier
+                        </button>
+                    </div>
+
+                }
+                <div class="login100-more" style="background-image: url('../../Content/Auth/images/ensaSafi1.png');">
+                </div>
+            </div>
+    </div>
+    @Html.Partial("~/Views/Partials/JsPartial.cshtml")
+</body>
+</html>
+

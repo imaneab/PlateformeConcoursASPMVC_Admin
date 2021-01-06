@@ -1,0 +1,263 @@
+﻿@{
+    ViewBag.Title = "Statistique";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Statistique <small>des inscrits et preselectionnes</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/Home/Index">Acceuil</a></li>
+            <li><a href="#">Statistique</a></li>
+            <li class="active">Données</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Statistique</div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+
+                        <h3> Liste Des Préinscrit AU CONCOURS 3eme Année Ensa SAFI</h3><br />
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">DUT</th>
+                                    <th scope="col">DEUG</th>
+                                    <th scope="col">DEUST</th>
+                                    <th scope="col">LICENCE PRO</th>
+                                    <th scope="col">LICENCE LFND</th>
+                                    <th scope="col">TOTALE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-primary" style="background-color:aquamarine">
+                                    <th scope="row">GENIE INFORMATIQUE</th>
+                                    <td>@ViewData["NombreGINFDUT"]</td>
+                                    <td>@ViewData["NombreGINFDEUG"]</td>
+                                    <td>@ViewData["NombreGINFDEUST"]</td>
+                                    <td>@ViewData["NombreGINFLP"]</td>
+                                    <td>@ViewData["NombreGINFLF"]</td>
+                                    <td>@ViewData["TotalGINF"]</td>
+
+                                </tr>
+                                <tr class="table-secondary" style="background-color:aquamarine">
+                                    <th scope="row">GENIE TELECOM ET RESEAU</th>
+                                    <td>@ViewData["NombreGTRDUT"]</td>
+                                    <td>@ViewData["NombreGTRDEUG"]</td>
+                                    <td>@ViewData["NombreGTRDEUST"]</td>
+                                    <td>@ViewData["NombreGTRLP"]</td>
+                                    <td>@ViewData["NombreGTRLF"]</td>
+                                    <td>@ViewData["TotalGTR"]</td>
+                                </tr>
+                                <tr class="table-success" style="background-color:cornflowerblue">
+                                    <th scope="row">GENIE INDUSTRIEL</th>
+                                    <td>@ViewData["NombreGINDDUT"]</td>
+                                    <td>@ViewData["NombreGINDDEUG"]</td>
+                                    <td>@ViewData["NombreGINDDEUST"]</td>
+                                    <td>@ViewData["NombreGINDLP"]</td>
+                                    <td>@ViewData["NombreGINDLF"]</td>
+                                    <td>@ViewData["TotalGIND"]</td>
+                                </tr>
+                                <tr class="table-info" style="background-color:cornflowerblue">
+                                    <th scope="row">GENIE DES PROCEDES ET MC</th>
+                                    <td>@ViewData["NombreGPMCDUT"]</td>
+                                    <td>@ViewData["NombreGPMCDEUG"]</td>
+                                    <td>@ViewData["NombreGPMCDEUST"]</td>
+                                    <td>@ViewData["NombreGPMCLP"]</td>
+                                    <td>@ViewData["NombreGPMCLF"]</td>
+                                    <td>@ViewData["TotalGPMC"]</td>
+                                </tr>
+                                <tr class="table-info" style="background-color:papayawhip">
+                                    <th scope="row">Total Préinscrit</th>
+                                    <td>@ViewData["TotalPreinsDUT"]</td>
+                                    <td>@ViewData["TotalPreinsDEUG"]</td>
+                                    <td>@ViewData["TotalPreinsDEUST"]</td>
+                                    <td>@ViewData["TotalPreinsLP"]</td>
+                                    <td>@ViewData["TotalPreinsLF"]</td>
+                                    <td>@ViewData["TotalPreinscrit"]</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3> Liste Des Convoque AU CONCOURS 3eme Année Ensa SAFI</h3><br />
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">DUT</th>
+                                    <th scope="col">DEUG</th>
+                                    <th scope="col">DEUST</th>
+                                    <th scope="col">LICENCE PRO</th>
+                                    <th scope="col">LICENCE LFND</th>
+                                    <th scope="col">TOTALE</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-primary" style="background-color:aquamarine">
+                                    <th scope="row">GENIE INFORMATIQUE</th>
+                                    <td>@ViewData["NombreGINFDUTC"]</td>
+                                    <td>@ViewData["NombreGINFDEUGC"]</td>
+                                    <td>@ViewData["NombreGINFDEUSTC"]</td>
+                                    <td>@ViewData["NombreGINFLPC"]</td>
+                                    <td>@ViewData["NombreGINFLFC"]</td>
+                                    <td>@ViewData["TotalGINFC"]</td>
+
+                                </tr>
+                                <tr class="table-secondary" style="background-color:aquamarine">
+                                    <th scope="row">GENIE TELECOM ET RESEAU</th>
+                                    <td>@ViewData["NombreGTRDUTC"]</td>
+                                    <td>@ViewData["NombreGTRDEUGC"]</td>
+                                    <td>@ViewData["NombreGTRDEUSTC"]</td>
+                                    <td>@ViewData["NombreGTRLPC"]</td>
+                                    <td>@ViewData["NombreGTRLFC"]</td>
+                                    <td>@ViewData["TotalGTRC"]</td>
+                                </tr>
+                                <tr class="table-success" style="background-color:cornflowerblue">
+                                    <th scope="row">GENIE INDUSTRIEL</th>
+                                    <td>@ViewData["NombreGINDDUTC"]</td>
+                                    <td>@ViewData["NombreGINDDEUGC"]</td>
+                                    <td>@ViewData["NombreGINDDEUSTC"]</td>
+                                    <td>@ViewData["NombreGINDLPC"]</td>
+                                    <td>@ViewData["NombreGINDLFC"]</td>
+                                    <td>@ViewData["TotalGINDC"]</td>
+                                </tr>
+                                <tr class="table-info" style="background-color:cornflowerblue">
+                                    <th scope="row">GENIE DES PROCEDES ET MC</th>
+                                    <td>@ViewData["NombreGPMCDUTC"]</td>
+                                    <td>@ViewData["NombreGPMCDEUGC"]</td>
+                                    <td>@ViewData["NombreGPMCDEUSTC"]</td>
+                                    <td>@ViewData["NombreGPMCLPC"]</td>
+                                    <td>@ViewData["NombreGPMCLFC"]</td>
+                                    <td>@ViewData["TotalGPMCC"]</td>
+                                </tr>
+                                <tr class="table-info" style="background-color:papayawhip">
+                                    <th scope="row">Total Convoque</th>
+                                    <td>@ViewData["TotalConvoqueDUT"]</td>
+                                    <td>@ViewData["TotalConvoqueDEUG"]</td>
+                                    <td>@ViewData["TotalConvoqueDEUST"]</td>
+                                    <td>@ViewData["TotalConvoqueLP"]</td>
+                                    <td>@ViewData["TotalConvoqueLF"]</td>
+                                    <td>@ViewData["TotalConvoque"]</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="container" style="width: 75%;">
+                            <canvas id="canvas"></canvas>
+                        </div>
+                        <div id="container1" style="width: 75%;">
+                            <canvas id="canvas1"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/utils.js"></script>
+
+    <script>
+		var MONTHS = ['DUT ', 'DEUG', 'DEUST', 'LF', 'LP'];
+        var color = Chart.helpers.color;
+		var barChartData = {
+            labels: ['DUT ', 'DEUG', 'DEUST', 'LF', 'LP'],
+			datasets: [{
+				label: 'Nombre Etudiant',
+				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.red,
+				borderWidth: 1,
+				data: [
+					@ViewData["NombreDUT"],
+					@ViewData["NombreDEUG"],
+					@ViewData["NombreDEUST"],
+					@ViewData["NombreLF"],
+					@ViewData["NombreLP"]
+				]
+			}]
+        };
+        var barChartData2 = {
+            labels: ['Genie INFO ', 'GENIE INDUS', 'GENIE PMC', 'GENIE TR'],
+			datasets: [{
+				label: 'Nombre Etudiant',
+				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.red,
+				borderWidth: 1,
+				data: [
+					@ViewData["NombreAdmisINFO"],
+					@ViewData["NombreAdmisINDUS"],
+					@ViewData["NombreAdmisGPMC"],
+					@ViewData["NombreAdmisGTR"]
+				]
+			}]
+		};
+        window.onload = function () {
+            var ctx1 = document.getElementById('canvas1').getContext('2d');
+            window.myBar = new Chart(ctx1, {
+                type: 'bar',
+                data: barChartData2,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Nombre Etudiant Par Diplome'
+                    }
+                }
+            });
+        };
+		window.onload = function() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Nombre Etudiant Par Diplome'
+                    }
+                }
+            });
+            var ctx1 = document.getElementById('canvas1').getContext('2d');
+            window.myBar = new Chart(ctx1, {
+                type: 'bar',
+                data: barChartData2,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Nombre Etudiant Par Diplome'
+                    }
+                }
+            });
+		};
+    </script>
+
+
+}
